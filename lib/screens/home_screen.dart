@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xz_youtube_t/models/channel_model.dart';
 import 'package:xz_youtube_t/models/video_model.dart';
+import 'package:xz_youtube_t/screens/video_screen.dart';
 import 'package:xz_youtube_t/services/api_services.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,7 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildVideo(Video video) {
-    return Container(
+    return GestureDetector(
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (_) => VideoScreen(id: video.id))),
+      child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
         padding: EdgeInsets.all(10.0),
         height: 140.0,
@@ -61,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
     );
   }
 
